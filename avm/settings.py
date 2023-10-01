@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^
 DEBUG= False
 
 # allowed_hosts = os.environ.get("ALLOWED_HOSTS")
-ALLOWED_HOSTS = ('*')
+ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
 
 
