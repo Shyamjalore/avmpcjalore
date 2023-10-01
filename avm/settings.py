@@ -28,13 +28,13 @@ environ.Env.read_env()
 
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 # 'django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^'
-SECRET_KEY = 'django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG", "FALSE").lower =="true"
-DEBUG= False
+DEBUG= os.environ.get("DEBUG", "False").lower() == True
 
 # allowed_hosts = os.environ.get("ALLOWED_HOSTS")
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =  os.environ.get("ALLOWED_HOSTS").split(" ")
 # ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
 
 
