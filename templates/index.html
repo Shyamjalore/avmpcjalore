@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>आविम पूर्व छात्र परिषद जालोर </title>
+    <!-- <link rel="stylesheet" type="text/css" href="static/style.css"> -->
+    <style>
+        body {
+            background-size: cover ;  
+            {% comment %} background-color: antiquewhite; {% endcomment %}
+            
+            
+        }
+        .bg {
+
+            background-image: url("static/avmj.png");
+            {% comment %} background-image: url("img_girl.jpg"); {% endcomment %}
+          
+            /* Full height */
+            height: 100%; 
+          
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+          } 
+        
+        h1, h2 {
+            text-align: center;
+            margin-top: 100px;
+        }
+        h1 {
+            margin-top: 130px;
+        }
+        .tit
+        {
+            text-align: center;
+            margin-top: 140px;
+            font-size: xx-large; 
+        }
+        .alert-success {
+            background-color: #4CAF50; /* Green background color */
+            color: white; /* Text color */
+            padding: 15px; /* Padding for content inside the alert */
+            border-radius: 5px; /* Rounded corners */
+            border: 1px solid #4CAF50; /* Border color */
+            margin-bottom: 10px; 
+            
+        .alert-success .close {
+            position: right;
+            float: right;
+            top: -5px;
+            right: -4px;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2em
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-success">
+        <span class="close" onclick="dismissAlert()">&times;</span>
+        <strong>{{ message }}</strong> 
+    </div>
+    {% endfor %}
+    {% endif %}
+   
+        
+    <div class="bg">
+        
+        <h1>|| पूर्व छात्र परिषद जालोर आपका हार्दिक स्वागत करता है ||</h1>
+        <h2>आदर्श विद्या मंदिर जालोर </h2>
+
+
+        <div class="tit" >
+            <a href="/avmform"><b>पूर्व छात्र स्नेह मिलन समारोह हेतु पंजीयन करे </a> </b>
+        </div>
+    
+    </div>
+    {% comment %} <script src="script.js"></script> {% endcomment %}
+
+    <script>
+        // JavaScript function to dismiss the alert
+        function dismissAlert() {
+            var alert = document.querySelector(".alert");
+            alert.style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
