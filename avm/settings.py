@@ -122,6 +122,7 @@ DATABASES = {
     }
 }
 
+
 # postgres://avmjalore_user:GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1@dpg-ckafascg66mc73f2etjg-a.oregon-postgres.render.com/avmjalore
 
 
