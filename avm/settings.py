@@ -113,7 +113,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'avmjalore' ,
         'USER': 'avmjalore_user',
-        'PASSWORD': 'GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1',
+        'PASSWORD': '49.36.235.252/32',
         'HOST': 'dpg-ckafascg66mc73f2etjg-a',
         'PORT': '5432',
         'OPTIONS': {
