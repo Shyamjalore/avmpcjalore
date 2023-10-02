@@ -108,19 +108,19 @@ DATABASES = {
     'default' : dj_database_url.parse(env('DATABASE_URL'))
 
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'avmjalore' ,
-#         'USER': 'avmjalore_user',
-#         'PASSWORD': 'GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1',
-#         'HOST': '49.36.235.252/32',
-#         'PORT': '5432',
-#         'OPTIONS': {
-#             'sslmode': 'require',
-#         },
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'avmjalore' ,
+        'USER': 'avmjalore_user',
+        'PASSWORD': 'GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1',
+        'HOST': 'postgresql',
+        'PORT': '5432',
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
+    }
+}
 
 
 # postgres://avmjalore_user:GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1@dpg-ckafascg66mc73f2etjg-a.oregon-postgres.render.com/avmjalore
