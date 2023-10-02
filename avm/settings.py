@@ -31,7 +31,8 @@ environ.Env.read_env()
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get("DEBUG", "FALSE").lower =="true"
-DEBUG= os.environ.get("DEBUG", "False").lower() == True
+DEBUG=  True
+# os.environ.get("DEBUG", "False").lower() ==
 
 # allowed_hosts = os.environ.get("ALLOWED_HOSTS")
 ALLOWED_HOSTS =  os.environ.get("ALLOWED_HOSTS").split(" ")
@@ -82,15 +83,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'avm.wsgi.application'
 
-'''
-surep user details
-1.
-user - avmpcjalore
-password - adarshvidyamandirjalore1998
+# '''
+# super user details
+# 1.
+# user - avmpcjalore
+# password - adarshvidyamandirjalore1998
 
-2.
-user - AVMPOORVCHHATRJALORE
-password - 1998to2023  '''
+# 2.
+# user - AVMPOORVCHHATRJALORE
+# password - 1998to2023  '''
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -102,7 +103,7 @@ password - 1998to2023  '''
 #     }
 # }
 
-# database_url = os.environ.get("DATABASE_URL")
+database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
     'default' : dj_database_url.parse(env('DATABASE_URL'))
 
