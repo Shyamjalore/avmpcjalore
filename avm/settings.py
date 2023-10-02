@@ -114,7 +114,7 @@ DATABASES = {
         'NAME': 'avmjalore' ,
         'USER': 'avmjalore_user',
         'PASSWORD': 'GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1',
-        'HOST': 'postgresql',
+        'HOST': '192.168.29.139',
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',
