@@ -28,14 +28,25 @@ environ.Env.read_env()
 
 # SECRET_KEY = os.environ.get("SECRET_KEY")
 # 'django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^'
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^')
+# SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
+
+
+
 # DEBUG = os.environ.get("DEBUG", "FALSE").lower =="true"
-DEBUG=  True
+DEBUG = 'RENDER' not in os.environ
+# DEBUG=  True
 # os.environ.get("DEBUG", "False").lower() ==
 
+ALLOWED_HOSTS = []
+
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+
 # allowed_hosts = os.environ.get("ALLOWED_HOSTS")
-ALLOWED_HOSTS =  os.environ.get("ALLOWED_HOSTS").split(" ")
+# ALLOWED_HOSTS =  os.environ.get("ALLOWED_HOSTS").split(" ")
 # ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
 
 
@@ -60,6 +71,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # 'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
 
@@ -114,7 +126,7 @@ DATABASES = {
         'NAME': 'avmjalore' ,
         'USER': 'avmjalore_user',
         'PASSWORD': 'GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1',
-        'HOST': '192.168.29.139',
+        'HOST': 'dpg-ckafascg66mc73f2etjg-a.oregon-postgres.render.com',
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',
@@ -178,6 +190,10 @@ DATE_INPUT_FORMATS = ['%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y']
 STATIC_URL = '/static/'
 MEDIA_URL = 'media/'
 
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 # Default primary key field type
