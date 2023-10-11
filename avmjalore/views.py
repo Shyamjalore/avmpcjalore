@@ -30,7 +30,7 @@ def avmform(request):
         improvement = request.POST.get('improvement')
         suggestion = request.POST.get('suggestion')
         image = request.POST.get('image')
-        # WOB = request.POST.get('WOB')
+        WOB = request.POST.get('WOB')
        
         
         
@@ -47,7 +47,7 @@ def avmform(request):
             workaddress,
             qualification,
             DOB,
-            # WOB, 
+            WOB, 
             mobile,
             whatsapp,
             interest,
@@ -59,7 +59,7 @@ def avmform(request):
            
         )
         
-        avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image=image)
+        avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image=image, WOB=WOB)
         # # # avmform = Avmform(name=name, fathername=fathername)
         avmform.save()
         messages.success(request, "your form is successfully submitted.")
