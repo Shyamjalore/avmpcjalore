@@ -22,7 +22,7 @@ class Avmform(models.Model):
     improvement = models.TextField(null=True, blank=True, default=None)
     suggestion = models.TextField(null=True, blank=True, default=None)
     image = models.ImageField(upload_to='uploads/', blank=False,default=None )
-    WOB = models.DateField(null=True, blank=True,default=None)
+    # WOB = models.DateField(null=True, blank=True)
     
 # class Presentaddress(models.Model):
 #     houseorvillage = models.CharField(max_length=30 , default='')

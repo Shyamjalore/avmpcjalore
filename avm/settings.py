@@ -12,16 +12,16 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import dj_database_url
 import os
 from pathlib import Path
-import environ
+# import environ
 
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env()
+# env = environ.Env()
 
-environ.Env.read_env()
+# environ.Env.read_env()
 
 
 
@@ -108,18 +108,18 @@ WSGI_APPLICATION = 'avm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-database_url = os.environ.get("DATABASE_URL")
 DATABASES = {
-    'default' : dj_database_url.parse(env('DATABASE_URL'))
-
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
+# database_url = os.environ.get("DATABASE_URL")
+# DATABASES = {
+#     'default' : dj_database_url.parse(env('DATABASE_URL'))
+
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
