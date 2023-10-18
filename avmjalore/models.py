@@ -21,11 +21,7 @@ class Avmform(models.Model):
     organization = models.TextField(null=True, blank=True, default=None)
     improvement = models.TextField(null=True, blank=True, default=None)
     suggestion = models.TextField(null=True, blank=True, default=None)
-    image = models.ImageField(upload_to='uploads/', blank=False,default=None )
-    # WOB = models.DateField(null=True, blank=True)
-    
-# class Presentaddress(models.Model):
-#     houseorvillage = models.CharField(max_length=30 , default='')
+    image_url = models.CharField(max_length=255, default='')
     
     
     #admin ke database me object ka name change karne ke liye
