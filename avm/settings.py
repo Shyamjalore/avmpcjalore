@@ -95,18 +95,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'avm.wsgi.application'
 
-# '''
-# super user details
-# 1.
-# user - avmpcjalore
-# password - adarshvidyamandirjalore1998
 
-# 2.
-# user - AVMPOORVCHHATRJALORE
-# password - 1998to2023  '''
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -115,11 +104,8 @@ DATABASES = {
     }
 }
 
-# database_url = os.environ.get("DATABASE_URL")
-# DATABASES = {
-#     'default' : dj_database_url.parse(env('DATABASE_URL'))
 
-# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -135,24 +121,6 @@ DATABASES = {
 }
 
 
-# postgres://avmjalore_user:GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1@dpg-ckafascg66mc73f2etjg-a.oregon-postgres.render.com/avmjalore
-
-
-# DATABASES = {
-#     'default' : dj_database_url.parse(os.environ.get("DATABASE_URL"))
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django_mongodb_engine',
-#         'NAME': 'Avmform'
-#     }
-# }
-
-
-
-# Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -188,7 +156,6 @@ USE_TZ = True
 DATE_INPUT_FORMATS = ['%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y']
 
 STATIC_URL = '/static/'
-MEDIA_URL = 'media/'
 
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -217,3 +184,6 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # Set session age (in seconds, or None for a session that expires when the user closes their browser).
 # SESSION_COOKIE_AGE = 3600  # 1 hour, adjust as needed.
+
+MEDIA_URL = '/media/uploaded_image/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
