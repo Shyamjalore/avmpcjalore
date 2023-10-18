@@ -29,7 +29,7 @@ def avmform(request):
         organization = request.POST.get('organization')
         improvement = request.POST.get('improvement')
         suggestion = request.POST.get('suggestion')
-         uploaded_image = request.FILES['image']
+        uploaded_image = request.FILES['image']
         if uploaded_image:
            img_path = os.path.join('media', 'uploaded_image', uploaded_image.name)
            with open(img_path, 'wb') as img_file:
