@@ -51,7 +51,7 @@
                 <br>
                 <h3 id="secondhead">|| पूर्व छात्र पंजीयन पत्र ||</h3>
             </div>
-            <form action="avmform" method="post" enctype="multipart/form-data">
+            <form id="immageUploadForm" action="{% url 'avmform' %}" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
                 <label for="name">नाम :</label>
@@ -125,7 +125,7 @@
                 <br>
                 <br>
                 <label for="image">पासपोर्ट साइज फोटो (अधिकतम साइज़ 100kb ) :</label>
-                <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" required>
+                <input type="file" name="image" id="imageInput" accept=".jpg, .jpeg, .png" required>
                 <br>
                 <br>
 
