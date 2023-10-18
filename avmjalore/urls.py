@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from avmjalore import views
+from . import views
 
 admin.site.site_header = "AVMPOORVCHHATRA Admin"
 admin.site.site_title = "Avmpoorvchhatra Admin Portal"
