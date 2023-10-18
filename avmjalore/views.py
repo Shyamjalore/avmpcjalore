@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-
+import os
 from avmjalore.models import Avmform
 from django.contrib import messages
 
@@ -29,37 +29,15 @@ def avmform(request):
         organization = request.POST.get('organization')
         improvement = request.POST.get('improvement')
         suggestion = request.POST.get('suggestion')
-        image = request.POST.get('image')
-        # WOB = request.POST.get('WOB')
+         uploaded_image = request.FILES['image']
+        if uploaded_image:
+           img_path = os.path.join('media', 'uploaded_image', uploaded_image.name)
+           with open(img_path, 'wb') as img_file:
+               for chunk in uploaded_image.chunks():
+                   img_file.write(chunk)
        
         
-        
-        
-        #  python me kisi data ko debugg aise karte h
-        print(
-            name, 
-            fathername, 
-            batch, 
-            passout,
-            presentaddress,
-            permanentaddress,
-            occupation,
-            workaddress,
-            qualification,
-            DOB,
-            # WOB, 
-            mobile,
-            whatsapp,
-            interest,
-            achievement,
-            organization,
-            improvement,
-            suggestion,
-            image
-           
-        )
-        
-        avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image=image)
+        avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=img_path)
         # # # avmform = Avmform(name=name, fathername=fathername)
         avmform.save()
         messages.success(request, "your form is successfully submitted.")
