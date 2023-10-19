@@ -22,6 +22,10 @@ class Avmform(models.Model):
     improvement = models.TextField(null=True, blank=True, default=None)
     suggestion = models.TextField(null=True, blank=True, default=None)
     image_url = models.CharField(max_length=255, default='')
+    # WOB = models.DateField(null=True, blank=True)
+    
+# class Presentaddress(models.Model):
+#     houseorvillage = models.CharField(max_length=30 , default='')
     
     
     #admin ke database me object ka name change karne ke liye

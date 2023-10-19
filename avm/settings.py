@@ -9,35 +9,29 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-import dj_database_url
+# import dj_database_url
 import os
 from pathlib import Path
 # import environ
 
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# env = environ.Env()
-
-# environ.Env.read_env()
 
 
 
 
-# SECRET_KEY = os.environ.get("SECRET_KEY")
-# 'django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^'
+
 SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^')
-# SECRET_KEY = os.environ.get("SECRET_KEY")
-# SECURITY WARNING: don't run with debug turned on in production!
 
 
 
-# DEBUG = os.environ.get("DEBUG", "FALSE").lower =="true"
+
+
 DEBUG = 'RENDER' not in os.environ
-# DEBUG=  True
-# os.environ.get("DEBUG", "False").lower() ==
+
 
 ALLOWED_HOSTS = []
 
@@ -45,9 +39,6 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-# allowed_hosts = os.environ.get("ALLOWED_HOSTS")
-# ALLOWED_HOSTS =  os.environ.get("ALLOWED_HOSTS").split(" ")
-# ALLOWED_HOSTS = allowed_hosts.split() if allowed_hosts else []
 
 
 # Application definition
@@ -70,8 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # 'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    
 
 ]
 
@@ -105,7 +95,6 @@ DATABASES = {
 }
 
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -119,6 +108,13 @@ DATABASES = {
         },
     }
 }
+
+
+# postgres://avmjalore_user:GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1@dpg-ckafascg66mc73f2etjg-a.oregon-postgres.render.com/avmjalore
+
+
+
+
 
 
 
@@ -157,6 +153,7 @@ DATE_INPUT_FORMATS = ['%d-%m-%Y', '%d/%m/%Y', '%d/%m/%y']
 
 STATIC_URL = '/static/'
 
+
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     
@@ -184,6 +181,9 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # Set session age (in seconds, or None for a session that expires when the user closes their browser).
 # SESSION_COOKIE_AGE = 3600  # 1 hour, adjust as needed.
+
+
+# settings.py
 
 MEDIA_URL = '/media/uploaded_image/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
