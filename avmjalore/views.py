@@ -39,7 +39,7 @@ def avmform(request):
        render_base_url = os.environ.get('RENDER_BASE_URL')
        image_url = f'{render_base_url}/media/temp/{uploaded_image.name}'
         
-        avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=img_path)
+        avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
         # # # avmform = Avmform(name=name, fathername=fathername)
         avmform.save()
         messages.success(request, "your form is successfully submitted.")
