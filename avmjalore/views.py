@@ -42,8 +42,8 @@ def avmform(request):
             #     print("encoded_string", encoded_string)
         
 
-            # render_base_url = os.environ.get('RENDER_BASE_URL')
-            image_url = f'static/media/uploaded_image/{uploaded_image.name}'
+            render_base_url = os.environ.get('RENDER_BASE_URL')
+            image_url = f'/static/media/uploaded_image/{uploaded_image.name}'
 
         
         #  python me kisi data ko debugg aise karte h
