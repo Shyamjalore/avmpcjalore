@@ -10,7 +10,6 @@ def index(request):
 
 def avmform(request):
    
-    print('Invoked ----> avmform', request)
     if request.method == "POST":
         name = request.POST.get('name')
         fathername = request.POST.get('fathername')
