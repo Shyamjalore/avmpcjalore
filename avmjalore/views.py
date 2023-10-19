@@ -42,7 +42,7 @@ def avmform(request):
             #     print("encoded_string", encoded_string)
         
 
-            render_base_url = os.environ.get('RENDER_BASE_URL')
+            # render_base_url = os.environ.get('RENDER_BASE_URL')
             image_url = f'static/media/uploaded_image/{uploaded_image.name}'
 
         
@@ -67,7 +67,6 @@ def avmform(request):
             improvement,
             suggestion,
             uploaded_image,
-            encoded_string
            
         )
         
