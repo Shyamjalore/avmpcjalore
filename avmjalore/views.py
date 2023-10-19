@@ -31,13 +31,13 @@ def avmform(request):
         suggestion = request.POST.get('suggestion')
         uploaded_image = request.FILES['image']
         if uploaded_image:
-           img_path = os.path.join('media', 'uploaded_image', uploaded_image.name)
+           img_path = os.path.join('temp', uploaded_image.name)
            with open(img_path, 'wb') as img_file:
                for chunk in uploaded_image.chunks():
                    img_file.write(chunk)
-
-          render_base_url = os.environ.get('RENDER_BASE_URL')
-          image_url = f'{render_base_url}/media/{uploaded_image.name}'
+           
+           render_base_url = os.environ.get('RENDER_BASE_URL')
+           image_url = f'{render_base_url}/media/temp/{uploaded_image.name}'
         
         avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
         # # # avmform = Avmform(name=name, fathername=fathername)
