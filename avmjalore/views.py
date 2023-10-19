@@ -36,7 +36,7 @@ def avmform(request):
                for chunk in uploaded_image.chunks():
                    img_file.write(chunk)
 
-       render_base_url = os.environ.get('avmpcjalore.onrender.com')
+       render_base_url = os.environ.get('https://avmpcjalore.onrender.com')
        image_url = f'{render_base_url}/media/temp/{uploaded_image.name}'
         
         avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress, qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
