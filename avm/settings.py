@@ -185,5 +185,5 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # settings.py
 
-MEDIA_URL = '/media/uploaded_image/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media','uploaded_image')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media',)
