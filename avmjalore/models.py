@@ -21,7 +21,7 @@ class Avmform(models.Model):
     organization = models.TextField(null=True, blank=True, default=None)
     improvement = models.TextField(null=True, blank=True, default=None)
     suggestion = models.TextField(null=True, blank=True, default=None)
-    image_url = models.ImageField(upload_to="media/uploaded_image")
+    image_url = models.ImageField(upload_to="uploaded_image")
     # WOB = models.DateField(null=True, blank=True)
     
 # class Presentaddress(models.Model):
