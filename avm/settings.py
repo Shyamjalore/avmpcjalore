@@ -105,7 +105,7 @@ DATABASES = {
         'PORT': '5432',
         'OPTIONS': {
             'sslmode': 'require',
-        },
+        }
     }
 }
 
@@ -185,5 +185,5 @@ SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 
 # settings.py
 
-MEDIA_URL = '/static/media/uploaded_image/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/uploaded_image/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media','uploaded_image')
