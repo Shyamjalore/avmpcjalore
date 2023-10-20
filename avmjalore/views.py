@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 import os
 from avmjalore.models import Avmform
 from django.contrib import messages
-import base64
+
 
 # Create your views here.
 def index(request):
@@ -10,7 +10,7 @@ def index(request):
     return render(request, 'index.html')
 
 def avmform(request):
-   
+    image_url = None
     print('Invoked ----> avmform', request)
     if request.method == "POST":
         name = request.POST.get('name')
@@ -36,14 +36,8 @@ def avmform(request):
             with open(img_path, 'wb') as img_file:
                for chunk in uploaded_image.chunks():
                    img_file.write(chunk)
-        
-            # with open(img_path, "rb") as image_file:
-            #     encoded_string = base64.b64encode(image_file.read())
-            #     print("encoded_string", encoded_string)
-        
-
-            # render_base_url = os.environ.get('RENDER_BASE_URL')
-            image_url = f'https://avmpcjalore.onrender.com/static/media/uploaded_image/{uploaded_image.name}'
+            
+            image_url = '/media/uploaded_image/' + uploaded_image.name
 
         
         #  python me kisi data ko debugg aise karte h
@@ -67,6 +61,7 @@ def avmform(request):
             improvement,
             suggestion,
             uploaded_image,
+            image_url
            
         )
         
