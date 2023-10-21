@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 import os
 from avmjalore.models import Avmform
-from django.contrib import messages
 from django.http import HttpResponse
+from django.conf import settings
+from django.contrib import messages
+import mimetypes
 
 
 def index(request):
@@ -10,9 +12,22 @@ def index(request):
     return render(request, 'index.html')
 
 
-def avmform(request):
+def image(request, image_path):
+    image_path = os.path.join(settings.MEDIA_ROOT, image_path)
 
-    print('Invoked ----> avmform', request)
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as image_file:
+            content_type = mimetypes.guess_type(image_path)
+            if content_type is None:
+                content_type = 'application/octet-stream'
+
+            response = HttpResponse(image_file.read(), content_type=content_type)
+            return response
+
+    return HttpResponse("Image not found", status=404)
+
+
+def avmform(request):
     if request.method == "POST":
         try:
             name = request.POST.get('name')
@@ -34,7 +49,7 @@ def avmform(request):
             suggestion = request.POST.get('suggestion')
             uploaded_image = request.FILES['image']
 
-            directory_path = os.path.join('media', 'uploaded_image')
+            directory_path = os.path.join(settings.MEDIA_ROOT, 'uploaded_image')
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
 

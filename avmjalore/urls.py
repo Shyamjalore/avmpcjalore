@@ -10,7 +10,8 @@ admin.site.index_title = "Welcome to AVMpoorvchhatrajalore portal"
 
 urlpatterns = [
     path("", views.index, name='avmform'),
-    path("avmform", views.avmform, name='avmform')
+    path("avmform", views.avmform, name='avmform'),
+    path('images/<str:image_path>', views.image, name='image'),
 ]
 
 if settings.DEBUG:
