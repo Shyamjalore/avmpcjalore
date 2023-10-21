@@ -47,6 +47,9 @@ def avmform(request):
             suggestion = request.POST.get('suggestion')
             image = request.FILES['image']
 
+            if DOW == "":
+                DOW = None
+
             directory_path = os.path.join(settings.MEDIA_ROOT)
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
