@@ -1,160 +1,147 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Student alumni form</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+			integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+			crossorigin="anonymous"
+		/>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+			integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<style>
+		.btn {
+			margin-top: 30px;
+		}
+		.btn:hover {
+			background-color: chocolate;
+		}
+		body {
+			background-color: bisque;
+			font-family: Arial, sans-serif;
+		}
+		h1 {
+			text-align: center;
+			margin-top: 31px;
+		}
+		h3 {
+			text-align: center;
+			margin-top: 14px;
+		}
+	</style>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student alumni form</title>
+	<body>
+		<div id="school" class="container">
+			<fieldset>
+				<div>
+					<h1 id="heading">आदर्श विद्या मंदिर, जालौर</h1>
+					<br />
+					<h3 id="secondhead">|| पूर्व छात्र पंजीयन पत्र ||</h3>
+				</div>
+				<form id="immageUploadForm" action="{% url 'avmform' %}" method="post" enctype="multipart/form-data">
+					{% csrf_token %}
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
-        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
-        crossorigin="anonymous"></script>
+					<label for="name">नाम :</label>
+					<input type="text" class="form-control" id="name" required name="name" />
+					<br />
+					<label for="fathername">पिता का नाम :</label>
+					<input type="text" class="form-control" id="fathername" required name="fathername" />
+					<br />
 
+					<label for="batch">प्रवेश वर्ष बैच :</label>
+					<input type="number" class="form-control" id="batch" pattern="\d{4}" required name="batch" />
 
+					<label for="passout">अंतिम वर्ष बैच :</label>
+					<input type="number" class="form-control" id="passout" pattern="^\d{4}$" required name="passout" />
+					<br />
 
+					<label for="presentaddress">वर्तमान पता :</label>
+					<input type="text" class="form-control" id="presentaddress" required name="presentaddress" />
+					<br />
 
-</head>
-<style>
-    .btn {
-        margin-top: 30px;
-    }
+					<label for="permanentaddress">स्थायी पता :</label>
+					<input type="text" class="form-control" id="permanentaddress" required name="permanentaddress" />
+					<br />
 
-    .btn:hover {
-        background-color: chocolate;
-    }
+					<label for="occupation">व्यवसाय/कार्य/अध्ययन नाम :</label>
+					<input type="text" class="form-control" id="occupation" required name="occupation" />
+					<br />
 
-    body {
-        background-color: bisque;
-        font-family: Arial, sans-serif;
-    }
+					<label for="workaddress">व्यवसाय/कार्य/अध्ययन का पूरा पता :</label>
+					<input type="text" class="form-control" id="workaddress" required name="workaddress" />
+					<br />
+					<label for="qualification">शैक्षणिक/विशेष योग्यता :</label>
+					<input type="text" class="form-control" id="qualification" required name="qualification" />
+					<br />
 
-    h1 {
-        text-align: center;
-        margin-top: 31px;
-    }
+					<label for="DOB">जन्म तिथि :</label>
+					<input type="date" class="form-control" id="DOB" required name="DOB" />
 
-    h3 {
-        text-align: center;
-        margin-top: 14px;
-    }
-</style>
+					{% comment %}
+					<label for="WOB">विवाह तिथि :</label> <input type="date" class="form-control" id="WOB" name="WOB" />
+					{% endcomment %}
+					<br />
 
+					<label for="mobile">मोबाइल नंबर :</label>
+					<input type="tel" class="form-control" id="mobile" pattern="^[6789]\d{9}$" required name="mobile" />
 
-<body>
+					<label for="whatsapp">WhatsApp नंबर :</label>
+					<input type="tel" class="form-control" id="whatsapp" pattern="[0-9]{10}" name="whatsapp" />
+					<br />
 
-    <div id="school" class="container">
-        <fieldset>
-            <div>
-                <h1 id="heading">आदर्श विद्या मंदिर, जालौर</h1>
-                <br>
-                <h3 id="secondhead">|| पूर्व छात्र पंजीयन पत्र ||</h3>
-            </div>
-            <form id="immageUploadForm" action="{% url 'avmform' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
+					<label for="interest">अभिरुचि के विषय :</label>
+					<input type="text" class="form-control" id="interest" name="interest" />
+					<br />
 
-                <label for="name">नाम :</label>
-                <input type="text" class="form-control" id="name" required name="name">
-                <br>
-                <label for="fathername">पिता का नाम :</label>
-                <input type="text" class="form-control" id="fathername" required name="fathername">
-                <br>
+					<label for="achievement">सामाजिक उपलब्धि :</label>
+					<input type="text" class="form-control" id="achievement" name="achievement" />
+					<br />
 
+					<label for="organization">किसी संगठन में कोई दायित्व हो तो (दायित्व,संगठन का नाम) :</label>
+					<input type="text" class="form-control" id="organization" , name="organization" />
+					<br />
 
-                <label for="batch">प्रवेश वर्ष बैच :</label>
-                <input type="number" class="form-control" id="batch" pattern="\d{4}" required name="batch">
+					<label for="improvement">पूर्व छात्र के कार्यक्रम में सुधार के बिंदु :</label>
+					<textarea name="improvement" id="improvement" cols="30" rows="4"></textarea>
+					<br />
 
-                <label for="passout">अंतिम वर्ष बैच :</label>
-                <input type="number" class="form-control" id="passout" pattern="^\d{4}$" required name="passout">
-                <br>
+					<label for="suggestion">विद्यालय के विकास हेतु आपके सुझाव :</label>
+					<textarea name="suggestion" id="suggestion" cols="30" rows="4"></textarea>
+					<br />
+					<br />
+					<br />
+					<label for="image">पासपोर्ट साइज फोटो (अधिकतम साइज़ 100kb ) :</label>
+					<input type="file" name="image" id="imageInput" accept=".jpg, .jpeg, .png" required />
+					{% comment %} <img src="/media/uploaded_image/" alt="Image" /> {% endcomment %}
 
-                <label for="presentaddress">वर्तमान पता :</label>
-                <input type="text" class="form-control" id="presentaddress" required name="presentaddress">
-                <br>
+					<br />
+					<br />
 
-                <label for="permanentaddress">स्थायी पता :</label>
-                <input type="text" class="form-control" id="permanentaddress" required name="permanentaddress">
-                <br>
+					<button class="btn btn-primary" type="submit">Submit</button>
+				</form>
 
+				<p id="error-message"></p>
 
-                <label for="occupation">व्यवसाय/कार्य/अध्ययन नाम :</label>
-                <input type="text" class="form-control" id="occupation" required name="occupation">
-                <br>
+				<div id="myModal" class="modal">
+					<div class="modal-content">
+						<p>Your form is submitted.</p>
+						<button id="okButton">OK</button>
+					</div>
+				</div>
 
-                <label for="workaddress">व्यवसाय/कार्य/अध्ययन का पूरा पता :</label>
-                <input type="text" class="form-control" id="workaddress" required name="workaddress">
-                <br>
-                <label for="qualification">शैक्षणिक/विशेष योग्यता :</label>
-                <input type="text" class="form-control" id="qualification" required name="qualification">
-                <br>
-
-                <label for="DOB">जन्म तिथि :</label>
-                <input type="date" class="form-control" id="DOB"  required name="DOB">
-
-                {% comment %} <label for="WOB">विवाह तिथि :</label>
-                <input type="date" class="form-control" id="WOB"  name="WOB">  {% endcomment %}
-                <br>
-
-                <label for="mobile">मोबाइल नंबर :</label>
-                <input type="tel" class="form-control" id="mobile" pattern="^[6789]\d{9}$" required name="mobile">
-
-                <label for="whatsapp">WhatsApp नंबर :</label>
-                <input type="tel" class="form-control" id="whatsapp" pattern="[0-9]{10}" name="whatsapp">
-                <br>
-
-                <label for="interest">अभिरुचि के विषय :</label>
-                <input type="text" class="form-control" id="interest" name="interest">
-                <br>
-
-                <label for="achievement">सामाजिक उपलब्धि :</label>
-                <input type="text" class="form-control" id="achievement" name="achievement">
-                <br>
-
-                <label for="organization">किसी संगठन में कोई दायित्व हो तो (दायित्व,संगठन का नाम) :</label>
-                <input type="text" class="form-control" id="organization" , name="organization">
-                <br>
-
-                <label for="improvement">पूर्व छात्र के कार्यक्रम में सुधार के बिंदु :</label>
-                <textarea name="improvement" id="improvement" cols="30" rows="4"></textarea>
-                <br>
-
-                <label for="suggestion">विद्यालय के विकास हेतु आपके सुझाव :</label>
-                <textarea name="suggestion" id="suggestion" cols="30" rows="4"></textarea>
-                <br>
-                <br>
-                <br>
-                <label for="image">पासपोर्ट साइज फोटो (अधिकतम साइज़ 100kb ) :</label>
-                <input type="file" name="image" id="imageInput" accept=".jpg, .jpeg, .png" required>
-                <img src="/media/uploaded_image/" alt="Image">
-
-                <br>
-                <br>
-
-                <button class="btn btn-primary" type="submit">Submit</button>
-            </form>
-
-            
-            <p id="error-message"></p>
-
-            <div id="myModal" class="modal">
-                <div class="modal-content">
-                    <p>Your form is submitted.</p>
-                    <button id="okButton">OK</button>
-                </div>
-            </div>
-
-             {% if image_url %}
-             <h2>Uploaded Image</h2>
-             <img src="{% static image_url %}" alt="Image">
-             {% endif %}
-
-        </fieldset>
-
-    </div>
-
-
-</body>
-
+				{% if image_url %}
+				<h2>Uploaded Image</h2>
+				<img src="{% static image_url %}" alt="Image" />
+				{% endif %}
+			</fieldset>
+		</div>
+	</body>
 </html>
