@@ -48,8 +48,7 @@
 				</div>
 				<form id="immageUploadForm" action="{% url 'avmform' %}" method="post" enctype="multipart/form-data">
 					{% csrf_token %}
-
-					{% comment %} <label for="name">नाम :</label>
+					<label for="name">नाम :</label>
 					<input type="text" class="form-control" id="name" required name="name" />
 					<br />
 					<label for="fathername">पिता का नाम :</label>
@@ -78,19 +77,20 @@
 					<label for="workaddress">व्यवसाय/कार्य/अध्ययन का पूरा पता :</label>
 					<input type="text" class="form-control" id="workaddress" required name="workaddress" />
 					<br />
+
 					<label for="qualification">शैक्षणिक/विशेष योग्यता :</label>
 					<input type="text" class="form-control" id="qualification" required name="qualification" />
 					<br />
 
 					<label for="DOB">जन्म तिथि :</label>
-					<input type="date" class="form-control" id="DOB" required name="DOB" /> {% endcomment %}
-
-					{% comment %}
-					<label for="WOB">विवाह तिथि :</label> <input type="date" class="form-control" id="WOB" name="WOB" />
-					{% endcomment %}
+					<input type="date" class="form-control" id="DOB" required name="DOB" />
 					<br />
 
-					{% comment %} <label for="mobile">मोबाइल नंबर :</label>
+					<label for="DOW">विवाह तिथि :</label>
+					<input type="date" class="form-control" id="DOW" name="DOW" />
+					<br />
+
+					<label for="mobile">मोबाइल नंबर :</label>
 					<input type="tel" class="form-control" id="mobile" pattern="^[6789]\d{9}$" required name="mobile" />
 
 					<label for="whatsapp">WhatsApp नंबर :</label>
@@ -117,7 +117,7 @@
 					<textarea name="suggestion" id="suggestion" cols="30" rows="4"></textarea>
 					<br />
 					<br />
-					<br /> {% endcomment %}
+					<br />
 					<label for="image">पासपोर्ट साइज फोटो (अधिकतम साइज़ 100kb ) :</label>
 					<input type="file" name="image" id="imageInput" accept=".jpg, .jpeg, .png" required />
 

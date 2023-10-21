@@ -6,11 +6,8 @@ from django.conf import settings
 from django.contrib import messages
 import mimetypes
 
-
 def index(request):
-
     return render(request, 'index.html')
-
 
 def image(request, image_path):
     print("Getting imagepath:", image_path)
@@ -30,55 +27,6 @@ def image(request, image_path):
 def avmform(request):
     if request.method == "POST":
         try:
-            image = request.FILES['image']
-
-            directory_path = os.path.join(settings.MEDIA_ROOT)
-            if not os.path.exists(directory_path):
-                os.makedirs(directory_path)
-
-            img_path = ""
-            if image:
-                img_path = os.path.join(directory_path, image.name)
-                with open(img_path, 'wb') as img_file:
-                    for chunk in image.chunks():
-                        img_file.write(chunk)
-                
-            image_url = f'{request.get_host()}/media/${image.name}'
-            print("")
-            print("Image URL:", image_url)
-            print("")
-
-            file_names = []
-
-            if os.path.exists(directory_path) and os.path.isdir(directory_path):
-                for filename in os.listdir(directory_path):
-                    if os.path.isfile(os.path.join(directory_path, filename)):
-                        file_names.append(filename)
-            else:
-                print(">> dir path not found or is not directory")
-
-            print("")
-            print("")
-            print(f">> Files list in dir: {directory_path} - ")
-            print("")
-            for file_name in file_names:
-                print(file_name)
-            print("")
-            print("")
-            print("")
-
-        except Exception as e:
-            error_message = f"An error occurred: {str(e)}"
-
-            return HttpResponse(error_message, status=500)
-        return redirect("/")
-
-    return render(request, 'avmform.html')
-
-
-def avmform__(request):
-    if request.method == "POST":
-        try:
             name = request.POST.get('name')
             fathername = request.POST.get('fathername')
             batch = request.POST.get('batch')
@@ -89,6 +37,7 @@ def avmform__(request):
             workaddress = request.POST.get('workaddress')
             qualification = request.POST.get('qualification')
             DOB = request.POST.get('DOB')
+            DOW = request.POST.get('DOW')
             mobile = request.POST.get('mobile')
             whatsapp = request.POST.get('whatsapp')
             interest = request.POST.get('interest')
@@ -109,24 +58,10 @@ def avmform__(request):
                     for chunk in image.chunks():
                         img_file.write(chunk)
                 
-            image_url = f'{request.get_host()}/{img_path}'
-            print({img_path, image_url})
+            image_url = f'{request.get_host()}/media/${image.name.lstrip('$')}'
 
-            file_names = []
-
-            if os.path.exists(directory_path) and os.path.isdir(directory_path):
-                for filename in os.listdir(directory_path):
-                    if os.path.isfile(os.path.join(directory_path, filename)):
-                        file_names.append(filename)
-            else:
-                print(">> dir path not found or is not directory")
-
-            for file_name in file_names:
-                print(f"Files list in dir: {directory_path} - ", file_name)
-
-            # image_url = '/media/' + image.name
             avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress,
-                              qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
+                              qualification=qualification, DOB=DOB, DOW=DOW, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
             avmform.save()
             messages.success(request, "your form is successfully submitted.")
         except Exception as e:
