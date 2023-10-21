@@ -15,19 +15,11 @@ from pathlib import Path
 # import environ
 
 
-
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-
-
-
-
-SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^')
-
-
-
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY', default='django-insecure-dr-dqb31*xlqs!3i1+gd40&w$c!s+m@e79c3ktlzrz2xf*&70^')
 
 
 DEBUG = 'RENDER' not in os.environ
@@ -38,7 +30,6 @@ ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
 
 
 # Application definition
@@ -61,7 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    
+
 
 ]
 
@@ -70,7 +61,7 @@ ROOT_URLCONF = 'avm.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,7 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'avm.wsgi.application'
 
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -98,7 +88,7 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'avmjalore' ,
+        'NAME': 'avmjalore',
         'USER': 'avmjalore_user',
         'PASSWORD': 'GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1',
         'HOST': 'dpg-ckafascg66mc73f2etjg-a.oregon-postgres.render.com',
@@ -111,11 +101,6 @@ DATABASES = {
 
 
 # postgres://avmjalore_user:GCHpEpB5JIjlzm5yoIlsFMjjHqYaM2q1@dpg-ckafascg66mc73f2etjg-a.oregon-postgres.render.com/avmjalore
-
-
-
-
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -156,7 +141,7 @@ STATIC_URL = '/static/'
 
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    
+
     # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
@@ -166,9 +151,9 @@ if not DEBUG:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#Added manually
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR,'static')
+# Added manually
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
