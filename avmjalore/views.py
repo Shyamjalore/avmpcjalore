@@ -13,6 +13,7 @@ def index(request):
 
 
 def image(request, image_path):
+    print("Getting imagepath:", image_path)
     image_path = os.path.join(settings.MEDIA_ROOT, image_path)
 
     if os.path.exists(image_path):
@@ -26,8 +27,56 @@ def image(request, image_path):
 
     return HttpResponse("Image not found", status=404)
 
-
 def avmform(request):
+    if request.method == "POST":
+        try:
+            image = request.FILES['image']
+
+            directory_path = os.path.join(settings.MEDIA_ROOT)
+            if not os.path.exists(directory_path):
+                os.makedirs(directory_path)
+
+            img_path = ""
+            if image:
+                img_path = os.path.join(directory_path, image.name)
+                with open(img_path, 'wb') as img_file:
+                    for chunk in image.chunks():
+                        img_file.write(chunk)
+                
+            image_url = f'{request.get_host()}/media/${image.name}'
+            print("")
+            print("Image URL:", image_url)
+            print("")
+
+            file_names = []
+
+            if os.path.exists(directory_path) and os.path.isdir(directory_path):
+                for filename in os.listdir(directory_path):
+                    if os.path.isfile(os.path.join(directory_path, filename)):
+                        file_names.append(filename)
+            else:
+                print(">> dir path not found or is not directory")
+
+            print("")
+            print("")
+            print(f">> Files list in dir: {directory_path} - ")
+            print("")
+            for file_name in file_names:
+                print(file_name)
+            print("")
+            print("")
+            print("")
+
+        except Exception as e:
+            error_message = f"An error occurred: {str(e)}"
+
+            return HttpResponse(error_message, status=500)
+        return redirect("/")
+
+    return render(request, 'avmform.html')
+
+
+def avmform__(request):
     if request.method == "POST":
         try:
             name = request.POST.get('name')
@@ -47,23 +96,21 @@ def avmform(request):
             organization = request.POST.get('organization')
             improvement = request.POST.get('improvement')
             suggestion = request.POST.get('suggestion')
-            uploaded_image = request.FILES['image']
+            image = request.FILES['image']
 
-            directory_path = os.path.join(settings.MEDIA_ROOT, 'uploaded_image')
+            directory_path = os.path.join(settings.MEDIA_ROOT)
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
 
             img_path = ""
-            if uploaded_image:
-                img_path = os.path.join(directory_path, uploaded_image.name)
+            if image:
+                img_path = os.path.join(directory_path, image.name)
                 with open(img_path, 'wb') as img_file:
-                    for chunk in uploaded_image.chunks():
+                    for chunk in image.chunks():
                         img_file.write(chunk)
                 
-                render_base_url = os.environ.get('RENDER_BASE_URL')
-                image_url = f'{render_base_url}/{img_path}'
-
-            print({img_path, image_url, render_base_url})
+            image_url = f'{request.get_host()}/{img_path}'
+            print({img_path, image_url})
 
             file_names = []
 
@@ -77,7 +124,7 @@ def avmform(request):
             for file_name in file_names:
                 print(f"Files list in dir: {directory_path} - ", file_name)
 
-            # image_url = '/media/uploaded_image/' + uploaded_image.name
+            # image_url = '/media/' + image.name
             avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress,
                               qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
             avmform.save()
