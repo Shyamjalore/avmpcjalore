@@ -10,7 +10,7 @@ def index(request):
     return render(request, 'index.html')
 
 def avmform(request):
-    image_url = None
+    # image_url = None
     print('Invoked ----> avmform', request)
     if request.method == "POST":
         name = request.POST.get('name')
@@ -31,15 +31,15 @@ def avmform(request):
         improvement = request.POST.get('improvement')
         suggestion = request.POST.get('suggestion')
         uploaded_image = request.FILES['image']
-        if uploaded_image:
-            img_path = os.path.join('static', 'media', 'uploaded_image', uploaded_image.name)
-            with open(img_path, 'wb') as img_file:
-               for chunk in uploaded_image.chunks():
-                   img_file.write(chunk)
+        # if uploaded_image:
+        #     img_path = os.path.join('static', 'media', 'uploaded_image', uploaded_image.name)
+        #     with open(img_path, 'wb') as img_file:
+        #        for chunk in uploaded_image.chunks():
+        #            img_file.write(chunk)
             
             # image_url = '/media/uploaded_image/' + uploaded_image.name
-            render_base_url = os.environ.get('RENDER_BASE_URL')
-            image_url = f'{render_base_url}/media/uploaded_image/{uploaded_image.name}'
+            # render_base_url = os.environ.get('RENDER_BASE_URL')
+            # image_url = f'{render_base_url}/media/uploaded_image/{uploaded_image.name}'
         
         #  python me kisi data ko debugg aise karte h
         print(
@@ -61,8 +61,8 @@ def avmform(request):
             organization,
             improvement,
             suggestion,
-            uploaded_image,
-            image_url
+            uploaded_image
+            
            
         )
         
@@ -73,4 +73,4 @@ def avmform(request):
         return redirect("/")
         
     
-    return render(request,'avmform.html')
+    return render(request,'avmform.html', {'image_url': image_url})
