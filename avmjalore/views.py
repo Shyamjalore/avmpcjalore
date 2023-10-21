@@ -22,7 +22,7 @@ def image(request, image_path):
             if content_type is None:
                 content_type = 'application/octet-stream'
 
-            response = HttpResponse(image_file.read(), content_type=content_type)
+            response = HttpResponse(image_file.read(), content_type=content_type[0])
             return response
 
     return HttpResponse("Image not found", status=404)
