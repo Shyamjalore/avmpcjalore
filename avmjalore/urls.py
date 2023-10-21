@@ -11,7 +11,6 @@ admin.site.index_title = "Welcome to AVMpoorvchhatrajalore portal"
 urlpatterns = [
     path("", views.index, name='avmform'),
     path("avmform", views.avmform, name='avmform')
-
 ]
 
 if settings.DEBUG:

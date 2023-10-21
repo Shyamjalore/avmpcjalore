@@ -50,6 +50,18 @@ def avmform(request):
 
             print({img_path, image_url, render_base_url})
 
+            file_names = []
+
+            if os.path.exists(directory_path) and os.path.isdir(directory_path):
+                for filename in os.listdir(directory_path):
+                    if os.path.isfile(os.path.join(directory_path, filename)):
+                        file_names.append(filename)
+            else:
+                print(">> dir path not found or is not directory")
+
+            for file_name in file_names:
+                print(f"Files list in dir: {directory_path} - ", file_name)
+
             # image_url = '/media/uploaded_image/' + uploaded_image.name
             avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress,
                               qualification=qualification, DOB=DOB, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
