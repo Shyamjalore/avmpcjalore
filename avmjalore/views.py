@@ -50,6 +50,8 @@ def avmform(request):
             if DOW == "":
                 DOW = None
 
+            print("DOW:",DOW)
+
             directory_path = os.path.join(settings.MEDIA_ROOT)
             if not os.path.exists(directory_path):
                 os.makedirs(directory_path)
@@ -61,7 +63,7 @@ def avmform(request):
                     for chunk in image.chunks():
                         img_file.write(chunk)
                 
-            image_url = f'{request.get_host()}/media/{image.name}'
+            image_url = f'{request.get_host()}/images/{image.name}'
 
             avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress,
                               qualification=qualification, DOB=DOB, DOW=DOW, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
