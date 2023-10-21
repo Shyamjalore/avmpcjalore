@@ -44,9 +44,9 @@ def avmform(request):
                 with open(img_path, 'wb') as img_file:
                     for chunk in uploaded_image.chunks():
                         img_file.write(chunk)
-
-            render_base_url = os.environ.get('RENDER_BASE_URL')
-            image_url = f'{render_base_url}/{img_path}'
+                
+                render_base_url = os.environ.get('RENDER_BASE_URL')
+                image_url = f'{render_base_url}/{img_path}'
 
             print({img_path, image_url, render_base_url})
 
