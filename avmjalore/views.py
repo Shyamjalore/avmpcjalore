@@ -58,7 +58,7 @@ def avmform(request):
                     for chunk in image.chunks():
                         img_file.write(chunk)
                 
-            image_url = f'{request.get_host()}/media/${image.name.lstrip('$')}'
+            image_url = f'{request.get_host()}/media/{image.name}'
 
             avmform = Avmform(name=name, fathername=fathername, batch=batch, passout=passout, presentaddress=presentaddress, permanentaddress=permanentaddress, occupation=occupation, workaddress=workaddress,
                               qualification=qualification, DOB=DOB, DOW=DOW, mobile=mobile, whatsapp=whatsapp, interest=interest, achievement=achievement, organization=organization, improvement=improvement, suggestion=suggestion, image_url=image_url)
