@@ -34,10 +34,13 @@ def avmform(request):
             suggestion = request.POST.get('suggestion')
             uploaded_image = request.FILES['image']
 
+            directory_path = os.path.join('media', 'uploaded_image')
+            if not os.path.exists(directory_path):
+                os.makedirs(directory_path)
+
             img_path = ""
             if uploaded_image:
-                img_path = os.path.join(
-                    'media', 'uploaded_image', uploaded_image.name)
+                img_path = os.path.join(directory_path, uploaded_image.name)
                 with open(img_path, 'wb') as img_file:
                     for chunk in uploaded_image.chunks():
                         img_file.write(chunk)
