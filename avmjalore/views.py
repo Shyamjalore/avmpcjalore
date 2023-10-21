@@ -10,7 +10,7 @@ def index(request):
     return render(request, 'index.html')
 
 def avmform(request):
-    # image_url = None
+    image_url = None
     print('Invoked ----> avmform', request)
     if request.method == "POST":
         name = request.POST.get('name')
